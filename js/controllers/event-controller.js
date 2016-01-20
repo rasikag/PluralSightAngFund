@@ -16,24 +16,35 @@ eventsApp.controller('eventController',
                     {
                         name : 'Directive Master Class ',
                         createrName : 'Rasika Gayan ',
-                        duration : '1 hr',
+                        duration : 2,
                         level:'Advance',
-                        abstract : 'You will learn Directive'
+                        abstract : 'You will learn Directive',
+                        upVoteCount : 3
                     },
                     {
                         name : 'Scope for fun and profit',
                         createrName : 'Dulanjaya Sanjana',
-                        duration : '1 hr',
+                        duration : 1,
                         level:'Advance',
-                        abstract : 'You will learn Scope'
+                        abstract : 'You will learn Scope',
+                        upVoteCount : 5
                     },
                     {
                         name : 'Well behaved controller',
                         createrName : 'Darsana Prasad ',
-                        duration : '1 hr',
+                        duration : 3,
                         level:'Advance',
-                        abstract : 'You will learn Controleer'
+                        abstract : 'You will learn Controleer',
+                        upVoteCount : 19
                     }
                 ]
-            }
+            };
+            
+            $scope.upVoteSession = function(session){
+                session.upVoteCount++;
+            };
+            
+            $scope.downVoteSession = function (session){
+                session.upVoteCount--;
+            };
 });

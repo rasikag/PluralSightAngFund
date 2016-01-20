@@ -1,62 +1,76 @@
 <!DOCTYPE html>
 <html ng-app="eventsApp">
-    <head>
-        <title>Event Registration</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link href="css/app.css" rel="stylesheet"/>
-        
-    </head>
-    <body>
-        <div class="container">
-            <div class="navbar navbar-default">
-                <div class="navbar-inner">
-                    <ul class="nav">
-                    </ul>
-                </div>
+<head>
+    <title>Event Registration</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/app.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="navbar navbar-default">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="NewEvent.html">Create Event</a></li>
+            </ul>
+        </div>
+    </div>
+    <div ng-controller="eventController">
+        <img ng-src="{{event.image}}" alt="{{event.name}}"/>
+
+        <div class="row">
+            <div class="span1">
+                <h2>{{event.name}}</h2>
             </div>
-            <div ng-controller="eventController">
-                <img ng-src="{{event.image}}" alt="{{event.name}}"/>
-                <div class="row">
-                    <div class="span1">
-                        <h2>{{event.name}}</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span3">
-                        <div><strong>Date : </strong>{{event.date}}</div>
-                        <div><strong>Time : </strong>{{event.time}}</div>
-                    </div>
-                    <div class="span4">
-                        <address>
-                            <strong> Address : </strong><br/>
-                            {{event.location.address}},{{event.location.city}}<br/>
-                            {{event.location.province}}
-                        </address>
-                    </div>
-                </div>
-                <hr/>
-                <hr/>
-                
-                <h3>Sessions : </h3>
-                
-                <ul class="list-group">
-                    <li ng-repeat="session in event.sessions" class="list-group-item">
-                        <div><h3>Session Name : {{session.name}}</div>
-                        <div><strong>Doing By  : </strong>{{session.createrName}}</div>
-                        <div><strong>Session Duration : </strong>{{session.duration}}</div>
-                        <div><strong>Session Level : </strong>{{session.level}}</div>
-                        <div><strong>Session Abstract : </strong>{{session.abstract}}</div>
-                        
-                    </li>
-                </ul>
-                
+        </div>
+        <div class="row">
+            <div class="span3">
+                <div><strong>Date : </strong>{{event.date}}</div>
+                <div><strong>Time : </strong>{{event.time}}</div>
             </div>
-        </div>      
-        <script src="js/angular.min.js" type="text/javascript"></script>
-        <script src="js/jquery-2.2.0.min.js" type="text/javascript"></script>
-        <script src="js/underscore-min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/app.js" type="text/javascript"></script>
-        <script src="js/event-controller.js" type="text/javascript"></script>
-    </body>
+            <div class="span4">
+                <address>
+                    <strong> Address : </strong><br/>
+                    {{event.location.address}},{{event.location.city}}<br/>
+                    {{event.location.province}}
+                </address>
+            </div>
+        </div>
+        <hr/>
+        <hr/>
+
+        <h3>Sessions : </h3>
+
+        <ul class="list-group">
+            <li ng-repeat="session in event.sessions" class="list-group-item">
+                <div class="span0 well votingWidget">
+                    <div class="votingButton" ng-click="upVoteSession(session)">
+                        <i class="icon-chevron-up icon-white"></i>
+                    </div>
+                    <div class="badge badge-inverse">
+                        <div>{{session.upVoteCount}}</div>
+                    </div>
+                    <div class="votingButton" ng-click="downVoteSession(session)">
+                        <i class="icon-chevron-down icon-white"></i>
+                    </div>
+                </div>
+                <div><h3>Session Name : {{session.name}}</h3></div>
+                <div><strong>Doing By : </strong>{{session.createrName}}</div>
+                <div><strong>Session Duration : </strong>{{session.duration |duration}}</div>
+                <div><strong>Session Level : </strong>{{session.level}}</div>
+                <div><strong>Session Abstract : </strong>{{session.abstract}}</div>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="js/angular.min.js" type="text/javascript"></script>
+<script src="js/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="js/underscore-min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+<script src="js/controllers/event-controller.js" type="text/javascript"></script>
+<script src="js/filters.js" type="text/javascript"></script>
+
+</body>
 </html>
