@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="eventsApp">
+<head>
+    <title>Event Registration</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/app.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container">
+
+    <div ng-controller="cachesSampleController">
+        key : <input type="text" ng-model="key"/>
+        value : <input type="text" ng-model="value"/>
+        <button type="button" class="btn" ng-click="addToCache(key,avlue)">Add To Cache</button>
+        <br/>
+        <br/>
+        <input type="text" ng-model="keyToRead"/>
+        <br/>
+        <h3>value from cache : {{readFramCache(keyToRead)}}</h3>
+        <h3>Cache Status : {{getCacheStatus()}}</h3>
+    </div>
+
+</div>
+<script src="js/angular.min.js" type="text/javascript"></script>
+<script src="js/angular-resource.js" type="text/javascript"></script>
+<script src="js/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="js/underscore-min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+<script src="js/services/EventData.js" type="text/javascript"></script>
+<script src="js/services/cache-service.js" type="text/javascript"></script>
+<script src="js/controllers/event-controller.js" type="text/javascript"></script>
+<script src="js/filters.js" type="text/javascript"></script>
+
+</body>
+</html>
